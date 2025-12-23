@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comedor Cesarza - Res</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f8f8f8;
+    }
+
+    /* NUEVO ENCABEZADO CENTRADO Y ATRACTIVO */
+    .submenu-header {
+      background-color: #111;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .submenu-header h1 {
+      font-size: 48px;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    .underline {
+      width: 150px;
+      height: 5px;
+      background-color: #e74c3c;
+      margin: 10px auto 0 auto;
+    }
+
+    .content-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+      background-color: #fff;
+    }
+
+    .content-container img {
+      max-width: 100%;
+      width: 400px;
+      border-radius: 8px;
+    }
+
+    .description {
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    .description h2 {
+      font-size: 32px;
+      font-weight: bold;
+      border-bottom: 3px solid black;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .description ul {
+      padding-left: 20px;
+    }
+
+    .price-box {
+      background-color: #c0392b;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 18px;
+    }
+
+    .contact-footer {
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .contact-footer p {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .whatsapp-icon {
+      width: 40px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 800px) {
+      .content-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-flex">
+      <div class="logo-container">
+        <img src="img/logo.jpg" alt="Logo Comedor" class="logo-img" />
+        <h1 class="logo">Comedor Cesarza</h1>
+      </div>
+      <nav class="nav">
+        <ul class="main-menu">
+          <li><a href="index.html" class="active">Inicio</a></li>
+
+          <li class="has-submenu">
+            <a href="#asados">Asados</a>
+            <ul class="submenu">
+              <li><a href="Asado_Res.html">Res</a></li>
+              <li><a href="Asado_Cerdo.html">Cerdo</a></li>
+              <li><a href="Asado_Pollo.html">Pollo</a></li>
+            </ul>
+          </li>
+
+          <li class="has-submenu">
+            <a href="#sopas">Sopas</a>
+            <ul class="submenu">
+              <li><a href="sopas/res.html">Res</a></li>
+              <li><a href="sopas/pollo.html">Pollo</a></li>
+              <li><a href="sopas/cremas.html">Cremas</a></li>
+            </ul>
+          </li>
+
+          <li class="has-submenu">
+            <a href="#refrescos">Refrescos</a>
+            <ul class="submenu">
+              <li><a href="refrescos/naturales.html">Naturales</a></li>
+              <li><a href="refrescos/gaseosas.html">Gaseosas</a></li>
+              <li><a href="refrescos/licuados.html">Licuados</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ENCABEZADO CENTRADO -->
+  <section class="submenu-header">
+    <h1>RES</h1>
+    <div class="underline"></div>
+  </section>
+
+  <main class="content-container">
+    <img src="img/res2.jpg" data-whatsimg="https://i.imgur.com/YMOvzDW.jpeg" alt="Plato de res asada" />
+
+    <div class="description">
+      <h2>CONTENIDO:</h2>
+      <ul>
+        <li>Carne Asada</li>
+        <li>Arroz o gallopinto</li>
+        <li>Papas fritas</li>
+        <li>Ensalada</li>
+        <li>Salsa Alajillo</li>
+      </ul>
+    </div>
+  </main>
+
+  <div class="price-box">
+    Precio: C$ 200, incluye el delivery. 😊
+  </div>
+
+  <footer class="contact-footer">
+    <p>Contáctenos:</p>
+<a href="#" id="btn-whatsapp" title="Comprar por WhatsApp">
+  💬 Comprar por WhatsApp
+</a>
+
+</footer>
+
+</body>
+<script src="script.js"></script>
+
+</html>

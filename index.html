@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comedor Cesarza</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-flex">
+      <div class="logo-container">
+        <img src="img/logo.jpg" alt="Logo Comedor" class="logo-img" />
+        <h1 class="logo">Comedor Cesarza</h1>
+      </div>
+      <nav class="nav">
+        <ul class="main-menu">
+          <li><a href="index.html" class="active">Inicio</a></li>
+
+          <li class="has-submenu">
+            <a href="#asados">Asados</a>
+            <ul class="submenu">
+              <li><a href="Asado_Res.html">Res</a></li>
+              <li><a href="Asado_Cerdo.html">Cerdo</a></li>
+              <li><a href="Asado_Pollo.html">Pollo</a></li>
+            </ul>
+          </li>
+
+          <li class="has-submenu">
+            <a href="#sopas">Sopas</a>
+            <ul class="submenu">
+              <li><a href="sopas/res.html">Res</a></li>
+              <li><a href="sopas/pollo.html">Pollo</a></li>
+              <li><a href="sopas/cremas.html">Cremas</a></li>
+            </ul>
+          </li>
+
+          <li class="has-submenu">
+            <a href="#refrescos">Refrescos</a>
+            <ul class="submenu">
+              <li><a href="refrescos/naturales.html">Naturales</a></li>
+              <li><a href="refrescos/gaseosas.html">Gaseosas</a></li>
+              <li><a href="refrescos/licuados.html">Licuados</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Imagen destacada con título superpuesto -->
+  <section class="hero-image">
+    <img src="img/comedor.jpg" alt="Imagen destacada del comedor" class="hero-img" />
+    <div class="hero-overlay">
+      <h3 class="hero-title">COMEDOR CESARZA</h3>
+      <div class="hero-underline"></div>
+    </div>
+  </section>
+
+  <section class="hero">
+    <h2>ELIGE LO QUE MÁS TE GUSTE, ESTAMOS PARA SERVIRTE.</h2>
+  </section>
+
+  <section class="carousel-group">
+
+    <!-- Asados -->
+    <div class="carousel-box">
+      <h3>ASADOS</h3>
+      <div class="carousel">
+        <div class="slides" id="carouselAsados">
+          <img src="img/git asado1.gif" alt="Asado 1" class="carousel-image" />
+          <img src="img/gif asado2.gif" alt="Asado 2" class="carousel-image" />
+          <img src="img/gif asado3.gif" alt="Asado 3" class="carousel-image" />
+        </div>
+        <button class="prev" onclick="moveSlideGroup('carouselAsados', -1)">❮</button>
+        <button class="next" onclick="moveSlideGroup('carouselAsados', 1)">❯</button>
+      </div>
+    </div>
+
+    <!-- Sopas -->
+    <div class="carousel-box">
+      <h3>SOPAS</h3>
+      <div class="carousel">
+        <div class="slides" id="carouselSopas">
+          <img src="img/gif sopa1.gif" alt="Sopa 1" class="carousel-image" />
+          <img src="img/gif sopa3.gif" alt="Sopa 2" class="carousel-image" />
+          <img src="img/gif sopa4.gif" alt="Sopa 3" class="carousel-image" />
+        </div>
+        <button class="prev" onclick="moveSlideGroup('carouselSopas', -1)">❮</button>
+        <button class="next" onclick="moveSlideGroup('carouselSopas', 1)">❯</button>
+      </div>
+    </div>
+
+    <!-- Refrescos -->
+    <div class="carousel-box">
+      <h3>REFRESCOS</h3>
+      <div class="carousel">
+        <div class="slides" id="carouselRefrescos">
+          <img src="img/git coca.gif" alt="Refresco 1" class="carousel-image" />
+          <img src="img/git refresco2.gif" alt="Refresco 2" class="carousel-image" />
+          <img src="img/git refrescos.gif" alt="Refresco 3" class="carousel-image" />
+        </div>
+        <button class="prev" onclick="moveSlideGroup('carouselRefrescos', -1)">❮</button>
+        <button class="next" onclick="moveSlideGroup('carouselRefrescos', 1)">❯</button>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="map-section">
+    <h2>ENCUENTRANOS AQUI</h2>
+    <iframe src="https://www.google.com/maps?q=12.4408,-86.8949&hl=es&z=16&output=embed" allowfullscreen loading="lazy"></iframe>
+  </section>
+
+  <!-- Formulario de contacto -->
+<!-- Formulario de contacto -->
+<section class="contact-section">
+  <h2>Deje su comentario</h2>
+  <form id="contactForm" action="enviar.php" method="post" class="contact-form">
+    <input type="email" name="email" placeholder="Tu correo" required>
+    <textarea name="mensaje" rows="4" placeholder="Escriba su comentario aquí..." required></textarea>
+    <button type="submit">Enviar</button>
+    <p id="formMessage" style="color: green; display: none;"></p>
+  </form>
+</section>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: form.method,
+      body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+      // Mostrar mensaje
+      document.getElementById('formMessage').style.display = 'block';
+
+      // Limpiar campos
+      form.reset();
+    })
+    .catch(error => {
+      document.getElementById('formMessage').innerText = 'Error al enviar el mensaje.';
+      document.getElementById('formMessage').style.color = 'red';
+      document.getElementById('formMessage').style.display = 'block';
+    });
+  });
+</script>
+
+
+
+  <!-- Footer con contacto y WhatsApp -->
+<!-- Nuevo Footer completo con redes sociales, horario, dirección y derechos -->
+<footer class="footer" style="background-color: #111; color: #fff; padding: 40px 20px; text-align: center;">
+
+  <h3 style="margin-bottom: 20px;">Síguenos en redes sociales</h3>
+  
+  <!-- Íconos de Instagram y Facebook -->
+  <div style="margin-bottom: 20px;">
+   <!-- ✅ CORRECTO -->
+<a href="https://www.instagram.com/julio_cesarza/" target="_blank" title="Ver historias en Instagram" style="margin: 0 10px;">
+  <img src="https://img.icons8.com/fluency/48/instagram-new.png" alt="Instagram" />
+</a>
+<a href="https://www.facebook.com/profile.php?id=61572936475001" target="_blank" title="Ver historias en Facebook" style="margin: 0 10px;">
+  <img src="https://img.icons8.com/fluency/48/facebook-new.png" alt="Facebook" />
+</a>
+
+  </div>
+
+  <!-- Información de horario y dirección -->
+  <div style="margin-bottom: 20px; font-size: 15px; line-height: 1.6;">
+    <p><strong>Horario de Atención:</strong><br>
+    Lunes a Sábado de 8:00 AM a 7:00 PM<br>
+    Domingo de 8:00 AM a 2:00 PM</p>
+
+    <p><strong>Dirección:</strong><br>
+    Leon, Nicaragua – Antiguo talleres for 5c al norte</p>
+  </div>
+
+  <!-- Aviso legal -->
+  <p style="font-size: 14px; border-top: 1px solid #444; padding-top: 15px; margin-top: 20px;">
+    © 2025 Comedor Cesarza. Todos los derechos reservados.
+  </p>
+
+</footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

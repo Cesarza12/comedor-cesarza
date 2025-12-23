@@ -1,0 +1,449 @@
+/* Logo + Título */
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* espacio entre logo+título y menú */
+  gap: 10px;
+}
+
+/* Para que logo + h1 queden juntos a la izquierda */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #c0392b; /* rojo institucional */
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Nav para que el menú quede a la derecha y horizontal */
+.nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  margin: 0;
+}
+
+.nav a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 5px 10px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav a.active,
+.nav a:hover {
+  background: #000;
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* Header fijo */
+.header {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+/* Empuja el contenido hacia abajo para evitar que quede oculto debajo del header fijo */
+body {
+  padding-top: 80px;
+}
+
+/* Menú principal */
+.main-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Enlaces del menú */
+.main-menu > li > a {
+  text-decoration: none;
+  color: #000;
+  padding: 8px 12px;
+  font-weight: bold;
+  display: block;
+  transition: background 0.3s, color 0.3s;
+}
+
+.main-menu > li > a:hover,
+.main-menu > li > a.active {
+  background: #000;
+  color: #fff;
+  border-radius: 4px;
+}
+
+/* Submenús */
+.has-submenu {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 10px 0;
+  min-width: 150px;
+  z-index: 999;
+}
+
+.submenu li a {
+  display: block;
+  padding: 8px 15px;
+  color: #000;
+  text-decoration: none;
+}
+
+.submenu li a:hover {
+  background: #eee;
+  font-weight: bold;
+}
+
+/* Mostrar submenu al pasar el mouse */
+.has-submenu:hover .submenu {
+  display: block;
+}
+
+/* Imagen destacada */
+.hero-image {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  margin-top: -20px; /* Ajusta si el header está fijo */
+  text-align: center;
+  background: #fff;
+  margin-bottom: 20px;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
+  background-color: transparent;
+  padding: 10px 20px;
+  border-bottom: 4px solid #c0392b;
+  width: max-content;
+  text-align: center;
+}
+
+/* Línea debajo del título */
+.hero-underline {
+  width: 150px;
+  height: 5px;
+  background-color: #c0392b;
+  margin: 0 auto;
+}
+
+/* Hero sección con fondo rojo y texto blanco */
+.hero {
+  background-color: #c0392b;
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h2 {
+  font-size: 28px;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Carrusel */
+.carousel-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
+.carousel-box {
+  width: 300px;
+  text-align: center;
+}
+
+.carousel-box h3 {
+  color: #c0392b;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 300%;
+}
+
+.carousel-image {
+  width: 80%;
+  flex-shrink: 0;
+  height: 200px;
+  object-fit: cover;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 10;
+  border-radius: 50%;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+@media (max-width: 1000px) {
+  .carousel-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel-box {
+    width: 90%;
+  }
+}
+
+/* Formulario */
+.contact-section {
+  padding: 30px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.contact-section h2 {
+  color: #c0392b;
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form textarea {
+  padding: 10px;
+  font-size: 16px;
+  resize: vertical;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact-form button {
+  background-color: #c0392b;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #a93226;
+}
+
+/* Footer */
+.footer {
+  background-color: #000;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.footer img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Mapa */
+.map-section iframe {
+  width: 100%;
+  max-width: 1000px;
+  height: 450px;
+  border: 0;
+  display: block;
+  margin: 0 auto;
+}
+
+.map-section h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: BLACK;
+  margin-bottom: 20px;
+  text-align: center;
+
+}
+
+/* modificación del menu y submenu*/
+/* Header fijo */
+.header {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 40px; /* más espacio horizontal */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+/* Flex principal del header */
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Navegación principal */
+.nav {
+  padding-left: 20px; /* separa del borde izquierdo */
+}
+
+/* Menú principal */
+.main-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Enlaces principales */
+.main-menu > li > a {
+  text-decoration: none;
+  color: #000;
+  padding: 10px 15px;
+  font-weight: bold;
+  display: block;
+  transition: background 0.3s, color 0.3s;
+}
+
+.main-menu > li > a:hover,
+.main-menu > li > a.active {
+  background: #000;
+  color: #fff;
+  border-radius: 4px;
+}
+
+/* Submenús */
+/* Submenús */
+.has-submenu {
+  position: relative;
+}
+
+.submenu {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 10px 0;
+  min-width: 160px;
+  z-index: 999;
+  border-radius: 4px;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Mostrar el submenú suavemente al pasar el mouse */
+.has-submenu:hover .submenu {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Items dentro del submenú */
+.submenu li a {
+  display: block;
+  padding: 10px 15px;
+  color: #000;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.submenu li a:hover {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
