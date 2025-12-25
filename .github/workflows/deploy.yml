@@ -1,6 +1,5 @@
 name: Deploy FTP InfinityFree
 
-# Ejecuta el workflow en cada push a main
 on:
   push:
     branches:
@@ -11,16 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Clonar el repo
+      # 1️⃣ Checkout del repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Subir archivos por FTP a InfinityFree
+      # 2️⃣ Deploy por FTP
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}     # Host FTP de InfinityFree
-          username: ${{ secrets.FTP_USERNAME }} # Usuario FTP
-          password: ${{ secrets.FTP_PASSWORD }} # Contraseña FTP
-          server-dir: /htdocs/                  # Carpeta destino en InfinityFree
-          local-dir: ./                         # Carpeta local del repo a subir
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /htdocs/comedor-cesarza/   # Subcarpeta segura en InfinityFree
+          local-dir: ./                           # Carpeta raíz del repo
+          exclude: |
+            .git*
+            .github*
+            phpmailer/**                         # Ignora la carpeta problematica
