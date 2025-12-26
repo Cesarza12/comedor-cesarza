@@ -1,0 +1,23 @@
+name: Deploy comedor-cesarza via SSH
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH to Termux
+        uses: appleboy/ssh-action@v0.1.9
+        with:
+          host: ${{ secrets.SSH_HOST }}      # IP de tu Termux (ej: 10.253.136.36)
+          username: ${{ secrets.SSH_USER }}  # Usuario de Termux (whoami)
+          key: ${{ secrets.SSH_KEY }}        # Llave privada desde GitHub Secrets
+          port: ${{ secrets.SSH_PORT }}      # Puerto SSH (8022)
+          source: "./"                        # Carpeta local del repo
+          target: "~/proyecto/comedor-cesarza/"  # Carpeta de destino en Termux
