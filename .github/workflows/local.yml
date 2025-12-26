@@ -8,16 +8,22 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
+      # Paso 1: Obtener los archivos del repositorio
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Paso 2: Conectarse a Termux vía SSH y ejecutar comandos
       - name: Deploy via SSH to Termux
         uses: appleboy/ssh-action@v0.1.9
         with:
-          host: ${{ secrets.SSH_HOST }}      # IP de tu Termux (ej: 10.253.136.36)
+          host: ${{ secrets.SSH_HOST }}      # IP de Termux (ej: 10.253.136.36)
           username: ${{ secrets.SSH_USER }}  # Usuario de Termux (whoami)
           key: ${{ secrets.SSH_KEY }}        # Llave privada desde GitHub Secrets
-          port: ${{ secrets.SSH_PORT }}      # Puerto SSH (8022)
-          source: "./"                        # Carpeta local del repo
-          target: "~/proyecto/comedor-cesarza/"  # Carpeta de destino en Termux
+          port: ${{ secrets.SSH_PORT }}      # Puerto SSH (ej: 8022)
+          script: |
+            # Ir a la carpeta del proyecto
+            cd ~/proyecto/comedor-cesarza
+            # Actualizar con los últimos cambios del repo
+            git pull origin main
